@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.16.2",
     "babel-core": "^6.16.0",
     "history": "^3.0.0",
     "react": "^15.3.2",

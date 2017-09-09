@@ -16,12 +16,21 @@ const app = document.getElementById('app')
 // Create an enhanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(browserHistory, store);
 
+function requireAuth (store) {
+	return (nextState, replace) => {
+		let {login_status} = store.getState().app;
+		if (!login_status) {
+			replace('/login');
+		}
+	}
+}
+
 ReactDOM.render(
 	<Provider store={store}>
 	    <Router history 	= { history } >
 			<Route path='/'component={ Layout }>
 				<Route path ='login' component={LoginPage} />
-				<Route path ='todolist' component={ToDoPage} />
+				<Route path ='todolist' component={ToDoPage} onEnter={ requireAuth(store) }/>
 			</Route>
     	</Router>
 	</Provider>, app);

@@ -1,6 +1,7 @@
 // Libraries
 import React from 'react'
 import {connect} from 'react-redux'
+import { push } from 'react-router-redux'
 import { Link } from 'react-router'
 import TodoItem from './TodoItem'
 import NewTodoItem from './NewTodoItem'
@@ -31,6 +32,11 @@ class ToDoPage extends React.Component {
     this.setState({password});
   }
 
+  logout(){
+    this.props.dispatch({type:'USER_LOGOUT'});
+    this.props.dispatch(push('/login'));
+  }
+
   render() {
       const {todo} = this.props;
       let array = [];
@@ -45,6 +51,7 @@ class ToDoPage extends React.Component {
       <div>
         {array}
         <NewTodoItem />
+        <button class='btn' onClick={this.logout.bind(this)}>Logout</button>
       </div>
     );
   }

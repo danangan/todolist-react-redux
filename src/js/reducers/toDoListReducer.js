@@ -1,17 +1,16 @@
 export default function reducer(state={
-    todolist : [ 'work1', 'work2', 'work3' ]
+    todolist : []
   }, action) {
     switch (action.type) {
-      case 'LOGIN_USER_SUCCESS': {
+      case 'USER_LOGIN': {
         return {
-          ...state,
-          todolist : action.payload.todolist
+          ...state, todolist : action.payload,
         }
       }
-      case 'LOGOUT_USER_SUCCESS': {
+      case 'USER_LOGOUT': {
         return {
           ...state,
-          todolist : {}
+          todolist : [],
         }
       }
       case 'DELETE_TODO_ITEM' : {
