@@ -14,3 +14,6 @@ json-server --watch db.json -> for starting local database using db.json in http
 Please access the website at http://localhost:8080
 
 Enjoy!
+
+![Alt text](1.png?raw=true "Login Page")
+![Alt text](2.png?raw=true "To Do List Page")
