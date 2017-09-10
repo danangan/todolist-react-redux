@@ -29,15 +29,24 @@ class ToDoItem extends React.Component {
 
    render() {
    	return (
-    	<div id='not-found-page' class='container'>
-    		<TodoContent content={this.props.content}/>
-    		<button class='btn' onClick= {this.toggleEdit.bind(this)}>Edit</button>
-    		<button class='btn' onClick = {this.deleteItem.bind(this)}>Delete</button>
+    	<li class="list-group-item">
+        {
+          !this.state.showedit && 
+          <div class='row'>
+            <div class='col-7'>
+              <TodoContent content={this.props.content}/>
+            </div>
+            <div class='col-5'>
+              <button class='btn btn-outline-danger float-right' onClick = {this.deleteItem.bind(this)}>Delete</button>
+              <button class='btn btn-outline-success float-right mr-3' onClick= {this.toggleEdit.bind(this)}>Edit</button>
+            </div>
+          </div>
+        }
         { 
           this.state.showedit &&
           <EditToDoItem index={ this.props.index } content={ this.props.content} toggleEdit={this.toggleEdit.bind(this)}/>
         }
-    	</div>
+    	</li>
    	)
    }
 }

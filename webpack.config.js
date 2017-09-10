@@ -19,9 +19,6 @@ module.exports = {
       }
     ]
   },
-  script : {
-      "dev" : "webpack-dev-server --content-base src --hot --inline"
-  },
   output: {
     path: __dirname + "/src/",
     filename: "main.min.js"

@@ -1,23 +1,15 @@
 // Libraries
 import React from 'react'
 
-class Layout extends React.Component {
-  constructor(){
-    super();
-    this.state = {
-      email       : '',
-      password    : '',
-    }
-  }
-
-  render() {
-
-    return (
-      <div>
-        { this.props.children }
+const Layout = (props) => {
+  return (
+      <div class='container'>
+        <div class='jumbotron'>
+          <h1 class='display-3'>To Do App</h1>
+          { props.children }
+        </div>
       </div>
     );
-  }
 }
 
 export default Layout;

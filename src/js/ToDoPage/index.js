@@ -39,19 +39,20 @@ class ToDoPage extends React.Component {
 
   render() {
       const {todo} = this.props;
-      let array = [];
+      let list = [];
       for (var i = 0; i < todo.length; i++) {
-        let content = [];
-        for (var j = 0; j < todo[i].content; j++) {
-          content.push(todo[i.content[j]]);
-        }
-        array.push(<TodoItem index={i} content={todo[i]}/>)
+        list.push(<TodoItem index={i} content={todo[i]}/>)
       }
     return (
-      <div>
-        {array}
-        <NewTodoItem />
-        <button class='btn' onClick={this.logout.bind(this)}>Logout</button>
+      <div class='row'>
+        <div class='col-6'>
+          <p class='lead'>This is your to do list</p>
+          <ul class="list-group">
+            { list }
+            <NewTodoItem />
+          </ul>
+          <button class='btn btn-danger float-right btn-lg btn-block mt-3' onClick={this.logout.bind(this)}>Logout</button>
+        </div>
       </div>
     );
   }

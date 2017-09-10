@@ -32,12 +32,15 @@ class EditToDoItem extends React.Component {
 
    render() {
    	return (
-    	<div id='not-found-page' class='container'>
-        New To Do Item : <input value = {this.state.name} onChange = {this.handleNameChange.bind(this)}/>
-
-        <button onClick={this.addItem.bind(this)}>Save</button>
-        <button onClick={this.props.toggleEdit.bind(this)}>Cancel</button>
-    	</div>
+        <div class='row'>
+          <div class='col-5'>
+            <input class='form-control' value = {this.state.name} onChange = {this.handleNameChange.bind(this)}/>
+          </div>
+          <div class='col-7'>
+            <button class='btn btn-outline-danger float-right'onClick={this.props.toggleEdit.bind(this)}>Cancel</button>
+            <button class='btn btn-outline-success float-right mr-3' onClick={this.addItem.bind(this)}>Save</button>
+          </div>
+        </div>
    	)
    }
 }

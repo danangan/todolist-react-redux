@@ -1,7 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import { Provider } from "react-redux"
-import { applyRouterMiddleware, Router, Route, IndexRoute, browserHistory, IndexRedirect} from 'react-router'
+import { Router, Route, browserHistory, IndexRedirect} from 'react-router'
 import { syncHistoryWithStore, routerReducer, push } from 'react-router-redux'
 import Layout from "./Layout"
 import store from "./store"
@@ -29,6 +29,7 @@ ReactDOM.render(
 	<Provider store={store}>
 	    <Router history 	= { history } >
 			<Route path='/'component={ Layout }>
+				<IndexRedirect to='/login' />
 				<Route path ='login' component={LoginPage} />
 				<Route path ='todolist' component={ToDoPage} onEnter={ requireAuth(store) }/>
 			</Route>

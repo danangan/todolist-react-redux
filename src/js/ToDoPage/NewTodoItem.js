@@ -27,10 +27,17 @@ class NewTodoItem extends React.Component {
 
    render() {
    	return (
-    	<div id='not-found-page' class='container'>
-        New To Do Item : <input value = {this.state.name} onChange = {this.handleNameChange.bind(this)}/>
-        <button onClick={this.addItem.bind(this)}>Save</button>
-    	</div>
+      <li class="list-group-item">
+        <div class="form-group">
+          <label for="newtodoitem">New To Do Item</label>
+          <input  type          = 'text'
+                  placeholder   ="Enter New To Do Item"
+                  value         = {this.state.name} 
+                  class         ="form-control"
+                  onChange      = {this.handleNameChange.bind(this)}/>
+        </div>
+        <button class='btn btn-primary'onClick={this.addItem.bind(this)}>Add</button>
+      </li>
    	)
    }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 
 const ToDoContent = (props) => {
     return (
-    	<div>{props.content}</div>
+    	<span>{props.content}</span>
     );
 }
 
