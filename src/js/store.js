@@ -7,6 +7,6 @@ import { browserHistory } from 'react-router'
 
 import reducer from './reducers'
 
-// const middleware = applyMiddleware(promise(), thunk, logger(), routerMiddleware(browserHistory))
+const middleware = applyMiddleware(promise(), thunk, logger(), routerMiddleware(browserHistory))
 
-export default createStore(reducer)
+export default createStore(reducer, middleware)
