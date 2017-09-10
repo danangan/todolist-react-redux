@@ -1,12 +1,4 @@
 import React from 'react'
-import {connect} from 'react-redux'
-
-@connect((store) => {
-    return {
-
-    };
-})
-
 
 class EditToDoItem extends React.Component {
   constructor(){
@@ -25,11 +17,6 @@ class EditToDoItem extends React.Component {
     this.setState({name});
   }
 
-  addItem (){
-  	this.props.dispatch({type : 'EDIT_TODO_ITEM', payload : {index : this.props.index, content : this.state.name}})    
-    this.props.toggleEdit();
-  }
-
    render() {
    	return (
         <div class='row'>
@@ -38,7 +25,7 @@ class EditToDoItem extends React.Component {
           </div>
           <div class='col-7'>
             <button class='btn btn-outline-danger float-right'onClick={this.props.toggleEdit.bind(this)}>Cancel</button>
-            <button class='btn btn-outline-success float-right mr-3' onClick={this.addItem.bind(this)}>Save</button>
+            <button class='btn btn-outline-success float-right mr-3' onClick={()=>{this.props.editItem(this.props.index, this.state.name);this.props.toggleEdit()}}>Save</button>
           </div>
         </div>
    	)

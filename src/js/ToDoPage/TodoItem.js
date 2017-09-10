@@ -1,15 +1,10 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import { Link } from 'react-router'
 import TodoName from './TodoName'
 import TodoContent from './TodoContent'
 import EditToDoItem from './EditToDoItem'
+import DeleteButton from './DeleteButton'
+import EditButton from './EditButton'
 
-@connect((store) => {
-    return {
-
-    };
-})
 
 class ToDoItem extends React.Component {
   constructor(){
@@ -17,10 +12,6 @@ class ToDoItem extends React.Component {
     this.state = {
       showedit : false,
     }
-  }
-
-  deleteItem (){
-  	this.props.dispatch({type : 'DELETE_TODO_ITEM', payload : this.props.index})
   }
 
   toggleEdit(){
@@ -37,14 +28,17 @@ class ToDoItem extends React.Component {
               <TodoContent content={this.props.content}/>
             </div>
             <div class='col-5'>
-              <button class='btn btn-outline-danger float-right' onClick = {this.deleteItem.bind(this)}>Delete</button>
-              <button class='btn btn-outline-success float-right mr-3' onClick= {this.toggleEdit.bind(this)}>Edit</button>
+              <DeleteButton action = {()=>{this.props.deleteItem(this.props.index)}} />
+              <EditButton action = {this.toggleEdit.bind(this)} />
             </div>
           </div>
         }
         { 
           this.state.showedit &&
-          <EditToDoItem index={ this.props.index } content={ this.props.content} toggleEdit={this.toggleEdit.bind(this)}/>
+          <EditToDoItem index       ={ this.props.index } 
+                        content     ={ this.props.content} 
+                        toggleEdit  ={ this.toggleEdit.bind(this)}
+                        editItem    ={ this.props.editItem.bind(this)}/>
         }
     	</li>
    	)

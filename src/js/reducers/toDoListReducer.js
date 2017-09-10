@@ -1,4 +1,5 @@
 export default function reducer(state={
+    // todolist : [ 'work1', 'work2']
     todolist : []
   }, action) {
     switch (action.type) {

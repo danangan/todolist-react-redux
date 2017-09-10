@@ -1,11 +1,5 @@
 import React from 'react'
-import {connect} from 'react-redux'
-
-@connect((store) => {
-    return {
-
-    };
-})
+import AddButton from './AddButton'
 
 class NewTodoItem extends React.Component {
   constructor(){
@@ -20,11 +14,6 @@ class NewTodoItem extends React.Component {
     this.setState({name});
   }
 
-  addItem (){
-  	this.props.dispatch({type : 'ADD_TODO_ITEM', payload : this.state.name});
-    this.setState({name : ''});
-  }
-
    render() {
    	return (
       <li class="list-group-item">
@@ -36,7 +25,7 @@ class NewTodoItem extends React.Component {
                   class         ="form-control"
                   onChange      = {this.handleNameChange.bind(this)}/>
         </div>
-        <button class='btn btn-primary'onClick={this.addItem.bind(this)}>Add</button>
+        <AddButton action={()=>{this.props.addItem(this.state.name);this.setState({name:''})}}/>
       </li>
    	)
    }

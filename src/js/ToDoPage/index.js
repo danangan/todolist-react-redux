@@ -16,20 +16,18 @@ import NewTodoItem from './NewTodoItem'
 class ToDoPage extends React.Component {
   constructor(){
     super();
-    this.state = {
-      email       : '',
-      password    : '',
-    }
   }
 
-  handleEmailChange(e){
-    let email = e.target.value;
-    this.setState({email});
+  addItem (value){
+    this.props.dispatch({type : 'ADD_TODO_ITEM', payload : value});
   }
 
-  handlePasswordChange(e){
-    let password = e.target.value;
-    this.setState({password});
+  deleteItem (index){
+    this.props.dispatch({type : 'DELETE_TODO_ITEM', payload : index})
+  }
+
+  editItem(index, value){
+    this.props.dispatch({type : 'EDIT_TODO_ITEM', payload : {index : index, content : value}})    
   }
 
   logout(){
@@ -41,7 +39,7 @@ class ToDoPage extends React.Component {
       const {todo} = this.props;
       let list = [];
       for (var i = 0; i < todo.length; i++) {
-        list.push(<TodoItem index={i} content={todo[i]}/>)
+        list.push(<TodoItem index={i} content={todo[i]} deleteItem={this.deleteItem.bind(this) } editItem={this.editItem.bind(this)} />)
       }
     return (
       <div class='row'>
@@ -49,7 +47,7 @@ class ToDoPage extends React.Component {
           <p class='lead'>This is your to do list</p>
           <ul class="list-group">
             { list }
-            <NewTodoItem />
+            <NewTodoItem addItem={this.addItem.bind(this)}/>
           </ul>
           <button class='btn btn-danger float-right btn-lg btn-block mt-3' onClick={this.logout.bind(this)}>Logout</button>
         </div>
