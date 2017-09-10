@@ -15,5 +15,5 @@ Please access the website at http://localhost:8080
 
 Enjoy!
 
-![Alt text](1.png?raw=true "Login Page")
-![Alt text](2.png?raw=true "To Do List Page")
+![ScreenShot](https://raw.githubusercontent.com/danangarbansanur/todolis-react-redux/master/1.PNG)
+![ScreenShot](https://raw.githubusercontent.com/danangarbansanur/todolis-react-redux/master/2.PNG)
